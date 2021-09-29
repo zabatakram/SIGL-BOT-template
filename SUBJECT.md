@@ -35,9 +35,9 @@
 
 ### Warm-up 
 
-[ ] When typing `!name` the bot should write back the name of the user typing the command
+[x] When typing `!name` the bot should write back the name of the user typing the command
 
-[ ] When typing `!count` the bot should write back for each possible status (Online, Offline, Idle, Do not disturb) the number of members (including yourself) in the server with that status
+[x] When typing `!count` the bot should write back for each possible status (Online, Offline, Idle, Do not disturb) the number of members (including yourself) in the server with that status
 - Example : "3 members are online, 2 are idle and 4 are off"
 - Extra mile : Instead of counting the members, list them sorted by status
 
