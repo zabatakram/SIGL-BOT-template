@@ -1,6 +1,6 @@
 import os
 from discord.ext import commands
-from discord import Intents, Permissions, utils
+from discord import Intents, Permissions, utils, Member
 
 intents = Intents.default()
 intents.members = True
@@ -68,5 +68,10 @@ async def admin(ctx, param):
     await user.add_roles(role_)
 
 
-token = ""
+@bot.command()
+async def ban(ctx, member: Member):
+    await member.ban()
+
+
+token = "ODkyODIyODA2Mzg2MDU3Mjg3.YVSgCA.SXftHglgMRVUX194ruT6EJ2KdAE"
 bot.run(token)  # Starts the bot
